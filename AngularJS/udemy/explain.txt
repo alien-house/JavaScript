@@ -1,0 +1,25 @@
+#section2
+
+##MVC
+Model-View-Controller
+
+Model
+- Where the data for our application is stored.
+View
+- What the user sees
+Controller
+- Where the programming work is done
+
+#section3
+
+#section4
+
+
+
+
+
+
+
+
+
+

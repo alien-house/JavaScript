@@ -77,6 +77,7 @@ function game(personAnswer) {
 }
 // view g_score
 $(function() {
+    var sort = Sort.Main.getInstance();
 
     $("#load").on("click", function() {
         $.getJSON(urlRsp, function(data) {
@@ -88,6 +89,31 @@ $(function() {
             btnBucket(data);
         });
     });
+    $("#btnBubble").on("click", function(){
+        $.getJSON(urlRsp, function(data){
+            sort.BubbleSort(data);
+        });
+    });
+    $("#btnRadix").on("click", function(){
+        $.getJSON(urlRsp, function(data){
+            sort.RadixSort(data);
+        });
+    });
+    $("#btnQuick").on("click", function(){
+        $.getJSON(urlRsp, function(data){
+            sort.QuickSort(data);
+        });
+    });
+    $("#btnBucket").on("click", function(){
+        $.getJSON(urlRsp, function(data){
+            sort.BucketSort(data);
+        });
+    });
+    $("#btnMerge").on("click", function(){
+        $.getJSON(urlRsp, function(data){
+            sort.MergeSort(data);
+        });
+    });
     $("#send").on("click", function(){
         var dataInsert = {
             'janken_name': g_name,
@@ -95,7 +121,7 @@ $(function() {
         };
         btnSend(dataInsert);
     });
-    
+
 });
 
 function btnSend(datas) {
@@ -117,203 +143,6 @@ function btnSend(datas) {
             // alert("Complete!"); 
         }
     });
-}
-
-
-
-
-// Bucket Sort
-function btnBucket(data) {
-    var bucket = [];
-    var sortData = [];
-    var max = 10000; //number of buckets
-    for (var i = 0; i < max; i++) { // create max numbert of buckets
-        bucket[i] = "";
-    }
-    for (var i = 0; i < bucket.length; i++) {
-        for (var j = 0; j < data.length; j++) {
-            if (i == data[j]) {
-                bucket[i] = data[j];
-            }
-        }
-    }
-    for (var i = 0; i < bucket.length; i++) {
-        if (bucket[i] != "") {
-            sortData.push(bucket[i]);
-        }
-    }
-    CreateDomTable(sortData);
-}
-
-// Merge Sort (only work for 8 data,,,)
-function btnMerge() {
-    var leftSlice = data.slice(0, data.length / 2); //divid half
-    var rightSlice = data.slice(data.length / 2, data.length);
-
-    function mergeSortLeft() {
-        var result = [];
-        var slice1 = leftSlice.slice(0, leftSlice.length / 2);
-        var slice2 = leftSlice.slice(leftSlice.length / 2, leftSlice.length);
-        if (slice1.length <= 2) { // conpair slice[0] & slice[1]
-            slice1[0] < slice1[1] ? result.push(slice1[0], slice1[1]) : result.push(slice1[1], slice1[0]);
-            slice2[0] < slice2[1] ? result.push(slice2[0], slice2[1]) : result.push(slice2[1], slice2[0]);
-            leftSlice = result;
-            return leftSlice;
-        }
-    }
-
-    function mergeSortRight() {
-        var result = [];
-        var slice1 = rightSlice.slice(0, rightSlice.length / 2);
-        var slice2 = rightSlice.slice(rightSlice.length / 2, rightSlice.length);
-        if (slice1.length <= 2) {
-            slice1[0] < slice1[1] ? result.push(slice1[0], slice1[1]) : result.push(slice1[1], slice1[0]);
-            slice2[0] < slice2[1] ? result.push(slice2[0], slice2[1]) : result.push(slice2[1], slice2[0]);
-            rightSlice = result;
-            return rightSlice;
-        }
-    }
-    var left = mergeSortLeft();
-    var right = mergeSortRight();
-    var sortData = [];
-    while (left.length > 0 && right.length > 0) { //if both.length are not 0, conpair left[0] &right[0]
-        if (left[0] < right[0]) {
-            sortData.push(left.shift()); //add left[0] to sortData[] & delete left[0]
-        } else {
-            sortData.push(right.shift()); //add right[0] to sortData[] & delete right[0]
-        }
-    }
-    if (left.length == 0) {
-        for (var i = 0; right.length > i; i++) {
-            sortData.push(right[i]);
-        }
-    }
-    if (right.length == 0) {
-        for (var j = 0; left.length > j; j++) {
-            sortData.push(left[j]);
-        }
-    }
-    CreateDomTable(sortData);
-}
-
-
-/* ================================ */
-/* # Radix Sort
-*/
-
-var bucket = [], //借りバケツ
-    max_digit_array = [], //最大桁数
-    r = 1;
-
-function RadixSort(data){
-    //バケツ用意（10進数なので10個のバケツを用意）
-    for (var i = 0; i < 10; i++) {
-        bucket[i] = [];
-    }
-    //k桁数繰り返す（今回は3桁なので3回）
-    for (var d = 0; d < max_digit_fnc(data); d++) {
-        for(var i = 0; i < data.length; i++){
-            //最下位桁の数字から見ていき、そのインデックスに追加していく。全データを移動させたいのでdata[i]に。
-            //ビットごとの OR 代入だと整数になる？console.log(1.0123 | 0);
-            bucket[(data[i]["score"] / r) % 10 | 0].push( data[i] );
-        }
-        //元データの配列に上書きしていく。バケツ配列の数分回す。
-        for(var i = 0, j = 0; j < bucket.length; j++){
-            //同じ桁があった場合は複数入る場合もあるので二重ループ。
-            for (var n = 0; n < bucket[j].length; n++) {
-                data[i++] = bucket[j][n];
-            }
-        }
-        //借りバケツを空にする
-        for (i = 0; i < bucket.length; i++) {
-          bucket[i] = [];
-        }
-        r *= 10; // 桁数を算出 （1, 10, 100）
-    }
-    CreateDomTable(data);
-}
-
-//n桁の数値を求める
-// var digit = function(num, n){
-//     return ~~(num / Math.pow(10, n)) % 10;
-// }
-
-//最大桁数を取得
-function max_digit_fnc(n){
-    for( var i = 0; i < n.length; i++ ){
-        max_digit_array[i] = String(n[i]["score"]).length;
-    }
-    return Math.max.apply(null, max_digit_array);
-}
-
-/* ================================ */
-/* # Quicksort
-*/
-
-function QuickSortStart(da){
-    var d = quickSort(da, 0, da.length-1);
-    CreateDomTable(d);
-}
-
-function quickSort(a, i, j){
-    if(i == j) return;
-    // Picking up a pivot
-    var axis_num = pivot(a, i, j);
-    // If not the all same
-    if(axis_num !== -1){
-        var k = partition(a, i, j, Number(a[axis_num]["score"])); // cross line index and exchange
-        quickSort(a, i, k-1);
-        quickSort(a, k, j);
-    }
-    return a;
-}
-
-// Picking up a pivot
-function pivot(data, i, j){
-    var k = i + 1; // the number of the comparison with next number
-    //最大数より小さい、なおかつ、データの数が同じな場合
-    while (k <= j && Number(data[i]["score"]) === Number(data[k]["score"])) {
-        k++;//繰り返す
-    }
-    //上限より大きければ-1を返す
-    if (k > j) {
-        return -1;
-    }
-    //前後を比較し、前の数値が大きければ そのインデックスを返す
-    if (Number(data[i]["score"]) >= Number(data[k]["score"])) {
-        return i;
-    }
-    return k;
-}
-
-//comparison, assignment, next of cross line index
-function partition(data, i, j, x){
-    var l = i, r = j;
-    // console.log(x);
-    // It lasts until cross
-    while(l <= r){
-        // check from the first, if the number is smaller than the pivot number, go through.
-
-        while(l <= r && Number(data[l]["score"]) < x){
-            l++;
-        }
-        // check from the last, if the number is bigger than the pivot number, go through.
-        while(r >= i && Number(data[r]["score"]) >= x){
-            r--;
-        }
-        if(l > r) break; // if it cross
-        //exchange
-        swap(data, l, r);
-        l++;
-        r--;
-    }
-    return l; // return the number of the cross
-}
-
-function swap(items, firstIndex, secondIndex){
-    var temp = items[firstIndex];
-    items[firstIndex] = items[secondIndex];
-    items[secondIndex] = temp;
 }
 
 // create table

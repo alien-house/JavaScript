@@ -10,7 +10,30 @@ var jsonData = [
     { "id":5, "name": "渓谷", "score": 258 },
     { "id":6, "name": "榊腹", "score": 2 },
     { "id":7, "name": "谷江", "score": 365 }
-]
+];
+
+var j_token_val;
+$(function() {
+    if(!localStorage.getItem("j_token")){
+        var j_token_val = token();
+        localStorage.setItem("j_token", j_token_val);
+    }else{
+        j_token_val = localStorage.getItem("j_token", j_token_val);
+    }
+    // if (typeof(Storage) === "undefined") {
+    //     alert("Sorry! No Web Storage support");
+    // }
+    console.log(j_token_val);
+});
+
+// make token
+var rand = function() {
+    return Math.random().toString(36).substr(2); 
+};
+var token = function() {
+    return rand() + rand(); 
+};
+
 $(function() {
     $("#btnEnd").hide();
     $('.selectImages').hide();
@@ -121,7 +144,8 @@ $(function() {
     $("#send").on("click", function(){
         var dataInsert = {
             'janken_name': g_name,
-            'janken_score': g_score
+            'janken_score': g_score,
+            'janken_token': j_token_val
         };
         btnSend(dataInsert);
     });

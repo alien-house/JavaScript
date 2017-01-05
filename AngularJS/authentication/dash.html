@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="cordgramsApp">
+<head>
+    <meta name="view" charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>ログイン</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+    <script src="lib/underscore-min.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-route.min.js"></script>
+    <script src="lib/angular-animate.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body ng-controller="HomeController">
+	<header></header>
+	<div class="container">
+		<div class="col-xs-12">
+			<global-navi></global-navi>
+		</div>
+	</div>
+
+	<div class="container" ng-view>
+		  
+	</div>
+
+
+</body>
+</html>

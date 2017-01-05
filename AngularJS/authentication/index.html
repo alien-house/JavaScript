@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta name="view" charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Angular Registration</title>
+    <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style_res.css">
+    <script src="lib/underscore-min.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-route.min.js"></script>
+    <script src="lib/angular-animate.min.js"></script>
+
+    <!-- form Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyA173WsjuLQlm9ZY64bd4NGC8mSKrmfnrA",
+        authDomain: "angularregistration-61aac.firebaseapp.com",
+        databaseURL: "https://angularregistration-61aac.firebaseio.com",
+        storageBucket: "angularregistration-61aac.appspot.com",
+        messagingSenderId: "655881800934"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <script src="https://cdn.firebase.com/libs/angularfire/2.2.0/angularfire.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services/authentication.js"></script>
+    <script src="js/controllers/registration.js"></script>
+    <script src="js/controllers/success.js"></script>
+</head>
+<body>
+	<header>
+        <!-- ng-include : be able to include html data  -->
+        <nav class="cf" ng-include="'views/nav.html'"></nav>   
+    </header>
+	<div class="page">
+        <!-- ng-show : if currentUser is valid, it's be shown  -->
+        <div class="userinfo" ng-show="currentUser" ng-controller="RegistrationController">
+            <span class="userinfo">Hi {{currentUser.firstname}}</span>
+            <a ng-href="#/login" ng-click="logout()">logout</a>
+        </div>
+        <!-- ng-view : view for templates -->
+        <main class="cf" ng-view>
+        </main>
+	</div>
+</body>
+</html>

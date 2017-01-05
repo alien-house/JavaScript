@@ -4,8 +4,12 @@ $connection = mysqli_connect('127.0.0.1','root','admin',"janken") or die("Error 
 
 # Escape user inputs for security
 $janken_name = mysqli_real_escape_string($connection, $_POST['janken_name']);
-$janken_score = mysqli_real_escape_string($connection, $_POST['janken_score']);
+$janken_score = $_POST['janken_score'];
 $janken_token = mysqli_real_escape_string($connection, $_POST['janken_token']);
+
+if(empty($janken_score)||empty($janken_score)||$janken_token){
+	echo "You can't connect the server.";
+}
 
 $sql = "INSERT INTO new_score (id, name, score, token)
 VALUES (NULL, '$janken_name', '$janken_score', '$janken_token')";

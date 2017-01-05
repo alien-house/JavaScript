@@ -2,7 +2,15 @@ var urlRsp = "http://192.168.0.15/php/rsp.php";
 var urlInsert = "http://192.168.0.15/php/insertrsp.php";
 var g_score = 0;
 var g_name;
-
+var jsonData = [
+    { "id":1, "name": "鈴木", "score": 330 },
+    { "id":2, "name": "山田", "score": 21 },
+    { "id":3, "name": "佐藤", "score": 56 },
+    { "id":4, "name": "駒込", "score": 865 },
+    { "id":5, "name": "渓谷", "score": 258 },
+    { "id":6, "name": "榊腹", "score": 2 },
+    { "id":7, "name": "谷江", "score": 365 }
+]
 $(function() {
     $("#btnEnd").hide();
     $('.selectImages').hide();
@@ -77,16 +85,12 @@ function game(personAnswer) {
 }
 // view g_score
 $(function() {
-    var sort = Sort.Main.getInstance();
+    var sort = Sort;
+    // var sort = Sort.Main.getInstance();
 
     $("#load").on("click", function() {
         $.getJSON(urlRsp, function(data) {
             CreateDomTable(data);
-        });
-    });
-    $("#btnBucket").on("click", function(){
-        $.getJSON(urlRsp, function(data){
-            btnBucket(data);
         });
     });
     $("#btnBubble").on("click", function(){

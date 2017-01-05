@@ -1,5 +1,6 @@
 var urlRsp = "http://192.168.0.15/php/rsp.php";
 var urlInsert = "http://192.168.0.15/php/insertrsp.php";
+var urlInsertNew = "http://192.168.0.15/php/insert_jresult.php";
 var g_score = 0;
 var g_name;
 var jsonData = [
@@ -15,7 +16,7 @@ var jsonData = [
 var j_token_val;
 $(function() {
     if(!localStorage.getItem("j_token")){
-        var j_token_val = token();
+        j_token_val = token();
         localStorage.setItem("j_token", j_token_val);
     }else{
         j_token_val = localStorage.getItem("j_token", j_token_val);
@@ -155,7 +156,7 @@ $(function() {
 function btnSend(datas) {
     $.ajax({
         type:"POST",             
-        url:urlInsert,       
+        url:urlInsertNew,       
         data:datas,
         dataType: "json", 
         success: function(json_data) { 

@@ -11,8 +11,8 @@ if(empty($janken_score)||empty($janken_score)||$janken_token){
 	echo "You can't connect the server.";
 }
 
-$sql = "INSERT INTO new_score (id, name, score, token)
-VALUES (NULL, '$janken_name', '$janken_score', '$janken_token')";
+$sql = "INSERT INTO new_score ( token, name, score )
+VALUES ('$janken_token', '$janken_name', '$janken_score' )";
 
 if(mysqli_query($connection, $sql)){
     echo "Records added successfully.";

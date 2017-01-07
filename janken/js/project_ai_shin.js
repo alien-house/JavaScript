@@ -3,6 +3,7 @@ var urlInsert = "http://192.168.0.15/php/insertrsp.php";
 var urlInsertNew = "http://192.168.0.15/php/insert_jresult.php";
 var g_score = 0;
 var g_name;
+var j_token_val;
 var jsonData = [
     { "id":1, "name": "鈴木", "score": 330 },
     { "id":2, "name": "山田", "score": 21 },
@@ -13,19 +14,31 @@ var jsonData = [
     { "id":7, "name": "谷江", "score": 365 }
 ];
 
-var j_token_val;
-$(function() {
-    if(!localStorage.getItem("j_token")){
+function get_name() {
+  if (typeof(Storage) !== "undefined") {
+    var existing_name = localStorage.getItem("lastgname")
+      if(existing_name){
+        document.getElementById("Result").innerHTML = existing_name;
+        return existing_name;
+      }else{
+        var new_name = prompt("Please enter your name");
         j_token_val = token();
-        localStorage.setItem("j_token", j_token_val);
-    }else{
-        j_token_val = localStorage.getItem("j_token", j_token_val);
-    }
-    // if (typeof(Storage) === "undefined") {
-    //     alert("Sorry! No Web Storage support");
-    // }
-    console.log(j_token_val);
-});
+         localStorage.setItem("j_token", j_token_val);
+         localStorage.setItem("lastname", new_name);
+         document.getElementById("Result").innerHTML = new_name;
+      }
+  } else {
+      document.getElementById("Result").innerHTML = "Sorry, your browser does not support Web Storage...";
+  }
+}
+
+var rand = function() {
+    return Math.random().toString(36).substr(2);
+};
+var token = function() {
+    return rand() + rand();
+};
+
 
 // make token
 var rand = function() {

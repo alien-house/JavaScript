@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Array &amp; Map &amp; Set</title>
+  </head>
+  <body>
+  <script type="text/javascript">
+  /* =================================== */
+  /*  Array
+  /* =================================== */
+  var ary = ['satou','takae','soho'];
+  console.log(ary);
+  console.log(ary.toString());
+
+  // initialize
+  var ary = new Array('satou','takae','soho');
+  var ary = new Array();
+  var ary = new Array(10);
+  // if you create a empty array, it's better
+  var ary = [];
+
+  // for each
+  var aryNum = [2,3,4,5];
+  aryNum.forEach(function(value, index, array){
+    console.log(index.toString() + " : " + value * value); 
+  });
+
+  //map
+  var resultMap = aryNum.map(function(value, index, array){
+    return value * value
+  });
+  console.log("resultMap:"+resultMap);
+
+  //some : needed to return result
+  var resultSome = aryNum.some(function(value, index, array){
+    return value % 3 === 0;
+  });
+  if(resultSome){
+    console.log("found out Multiples of 3");
+  }else{
+    console.log("not found out Multiples of 3");
+  }
+
+  //filter : 
+  var resultFilter = aryNum.filter(function(value, index, array){
+    return value % 2 === 1;
+  });
+  console.log("resultFilter:"+resultFilter);
+
+  //sort : 
+  var arySort = [2,25,10];
+  console.log("sort:"+arySort.sort());
+  console.log(arySort.sort(function(x,y){
+    return x - y;
+  })
+  );
+
+  var classes = ['manager','coworker','under','charge'];
+  var members = [
+    {name:'tom', clazz:'under'},
+    {name:'sarah', clazz:'manager'},
+    {name:'john', clazz:'coworker'},
+    {name:'kerry', clazz:'manager'},
+    {name:'ohpa', clazz:'charge'},
+  ];
+  console.log(members.sort(function(x,y){
+    // sorting using classes position
+    return classes.indexOf(x.clazz) - classes.indexOf(y.clazz);
+  })
+  );
+
+
+  </script>
+  <noscript>
+    You can't use Javascript.
+    </noscript>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object</title>
+  </head>
+  <body>
+  <script type="text/javascript">
+  /* =================================== */
+  /*  Object
+  /* =================================== */
+  let pet = {
+    type: 'snow',
+    name: 'kira',
+    des:{
+      birth: '2017-01'
+    }
+  };
+  let pet2 = {
+    name: 'kira yamada',
+    color: 'white',
+    des:{
+      food: 'seed'
+    }
+  };
+  let pet3 = {
+    weight: 353,
+  };
+
+  Object.assign(pet,pet2,pet3);
+  console.log(pet);
+
+  let merged = Object.assign({},pet,pet2,pet3);
+  console.log(pet);
+  console.log(merged);
+
+  </script>
+  <noscript>
+    You can't use Javascript.
+    </noscript>
+  </body>
+</html>

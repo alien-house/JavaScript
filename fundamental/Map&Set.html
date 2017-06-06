@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Map &amp; Set</title>
+  </head>
+  <body>
+  <script type="text/javascript">
+  /* =================================== */
+  /*  Map [ES2015]
+  /* =================================== */
+  let m = new Map();
+  m.set('dog', 'bowbow');
+  m.set('cat', 'meow');
+  m.set('mouse', 'chow');
+  //shoter
+  let m2 = new Map([['dog', 'bowbow2'],['cat', 'meow2'],['mouse', 'chow2']]);
+  console.log(m2);
+  console.log(m);
+  console.log(m.size);
+  console.log(m.get('dog'));
+  console.log(m.has('mouse'));
+
+  // get all key
+  for (let key of m.keys()){
+    console.log(key);
+  }
+  // get all value
+  for (let value of m.values()){
+    console.log(value);
+  }
+  // get both of them
+  for (let [key, value] of m){
+    console.log(key,value);
+  }
+
+  m.delete('dog');
+  console.log(m);
+
+  m.clear();
+  console.log(m.size);
+
+
+  console.log("==============================================");
+  /* =================================== */
+  /*  Set [ES2015]
+  /*  can not access using index, only for or value
+  /* =================================== */
+
+  let s = new Set();
+  s.add(10);
+  s.add(5);
+  s.add(100);
+  s.add(50);
+  s.add(5); // ignore
+  console.log(s);
+  console.log(s.size);
+  console.log(s.has(100));
+
+  for(let val of s.values()){
+    console.log(val);
+  }
+  for(let val of s){
+    console.log(val);
+  }
+
+
+
+  </script>
+  <noscript>
+    You can't use Javascript.
+    </noscript>
+  </body>
+</html>

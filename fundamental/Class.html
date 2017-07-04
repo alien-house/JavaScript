@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript for Beginners</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      /* prototype-based class */
+      // function User(name) {
+      //   this.name = name;
+      // }
+      // User.prototype.sayHi = function() {
+      //   console.log(this.name);
+      // }
+      // let user = new User("John");
+      // user.sayHi();
+      // let user2 = new User("Moca");
+      // user2.sayHi();
+
+      /* class syntax */
+      class User {
+        constructor(name) {
+          this.name = name;
+        }
+        sayHi() {
+          console.log(this.name);
+        }
+      }
+
+      let user = new User("John");
+      user.sayHi();
+
+
+
+    </script>
+    <noscript>
+      You can't use Javascript.
+    </noscript>
+  </body>
+</html>

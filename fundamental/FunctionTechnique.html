@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Function Technique</title>
+  </head>
+  <body>
+  <script type="text/javascript">
+  
+  /* =================================== */
+  /*  Technique
+  /* =================================== */
+  function showMessage(value){
+    if(arguments.length != 1){
+        throw new Error('number of arguments is worng：'+ arguments.length);
+    }
+    console.log(value);
+  }
+  try{
+    showMessage('yamada','david');
+  }catch(e){
+    // window.alert(e.message);
+  }
+
+  /* =================================== */
+  /*  Named arguments
+  /* =================================== */
+
+  function getTriangle(args){
+    if(args.base === undefined){args.base = 1;}
+    if(args.height === undefined){args.height = 1;}
+    return args.base * args.height / 2;
+  }
+  console.log(getTriangle({base:5, height:4}));
+  console.log(getTriangle({base:5}));
+
+  /* =================================== */
+  /*  defalt arguments [ES2015]
+  /* =================================== */
+
+  function getTriangleES2015(base = 1, height = 1){
+    return base * height / 2;
+  }
+  console.log(getTriangleES2015(5));
+
+  /* =================================== */
+  /*  Rest Parameter [ES2015]
+  /* =================================== */
+  function sum(...nums){
+    let result = 0;
+    for(let num of nums){
+      if(typeof num != 'number'){
+        throw new Error('it is not number : ' + num);
+      }
+      result += num;
+    }
+    return result;
+  }
+  try{
+    console.log(sum(1,2,5,7,9));
+  }catch(e){
+    window.alert(e.message);
+  }
+
+  /* =================================== */
+  /*  Named arguments [ES2015]
+  /* =================================== */
+
+  function getTriangleNamedES2015({base = 1, height = 1}){
+    return base * height / 2;
+  }
+  console.log(getTriangleNamedES2015({base : 5, height : 3}));
+
+  //
+  function show({name}){
+    console.log(name);
+  }
+  let member = {
+    mid : 'Y0001',
+    name : 'YamadaTaro',
+    address : 'yamada@yamada.com'
+  };
+  show(member);
+
+  /* =================================== */
+  /*  Mutable Return Variable [ES2015]
+  /* =================================== */
+  function getMaxMin(...nums){
+    return [Math.max(...nums), Math.min(...nums)];
+  }
+  let result = getMaxMin(10,35,-5,78,0);
+  console.log(result);
+
+  let [max, min] = getMaxMin(10,35,-5,78,0);
+  console.log(max);
+  console.log(min);
+
+  let [, min2] = getMaxMin(10,35,-5,78,0);
+  console.log(min2);
+
+
+
+  </script>
+  <noscript>
+    You can't use Javascript.
+    </noscript>
+  </body>
+</html>

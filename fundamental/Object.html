@@ -9,6 +9,27 @@
   /* =================================== */
   /*  Object
   /* =================================== */
+
+    function hoge(o) {
+      o = new Object();
+    }
+    var o = new Object();
+    o.p = 100;
+    hoge(o);
+    o.p; // o.p は 100 のままだ...
+    console.log(o.p);
+
+    console.log('---------------------------------------');
+    function hoge2(o) {
+      o.p = 0;
+    }
+    var o = new Object();
+    o.p = 100;
+    hoge2(o);
+    o.p; // o.p は 0 に変更されている!
+    console.log(o.p);
+
+      console.log('---------------------------------------');
   let pet = {
     type: 'snow',
     name: 'kira',

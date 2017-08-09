@@ -6,6 +6,95 @@
   </head>
   <body>
     <script type="text/javascript">
+
+
+var Animal = function(){}; 
+Animal.prototype = { 
+  walk : function() { 
+    console.log('トコトコ...');
+  }
+};
+
+var SuperAnimal = function() {}; 
+SuperAnimal.prototype = { 
+  walk : function() { 
+    console.log('ダダダダダ！');
+  }
+}; 
+
+var Dog = function() {}; 
+Dog.prototype = new Animal(); // Animalオブジェクトを継承 
+var d1 = new Dog(); 
+d1.walk(); // 結果：トコトコ... ← ❸ 
+
+Dog.prototype = new SuperAnimal(); // SuperAnimalオブジェクトを継承（切り替え）
+var d2 = new Dog(); 
+d2.walk(); // 結果：ダダダダダ！ 
+d1.walk(); // 結果：？？？？？？ ← ❺
+
+var d3 = new Dog(); 
+d3.walk();
+d1.walk();
+
+var d4 = new Dog(); 
+Dog.prototype = new Animal();
+d4.walk();
+
+
+
+
+    console.log('=====================');
+
+
+
+
+
+
+      var Member2 = function( firstName, lastName) { 
+        this.firstName = firstName; 
+        this.lastName = lastName; 
+      }; 
+      var m = Member2('権兵衛', '佐藤'); 
+      console.log(m); 
+
+
+
+
+
+
+
+
+
+
+
+
+function hoges() { 
+  console.log(arguments); 
+  var args = Array.prototype.slice.call(arguments); 
+  console.log(args.join('／')); 
+} 
+hoges('Angular', 'React', 'Backbone');
+
+
+
+
+
+
+
+
+
+var data = 'Global data'; 
+var obj1 = { data: 'obj 1 data' }; 
+var obj2 = { data: 'obj 2 data' }; 
+function hoge() { 
+  console.log(this.data); 
+} 
+hoge.call(null); // 結果： Global data 
+hoge.call(obj1); // 結果： obj 1 data 
+hoge.call(obj2); // 結果： obj 2 data
+
+
+
       /* prototype-based class */
       // function User(name) {
       //   this.name = name;

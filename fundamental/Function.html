@@ -9,37 +9,93 @@
   /* =================================== */
   /*  Function
   /* =================================== */
-  // (1) normal
-  function getTriangle(base, height){
-    return base * height / 2;
-  }
-  console.log('The area of the triangle : ' + getTriangle(5,3));
-
-  // (2) Function Constractor
-  var getTriangle2 = new Function('base','height','return base * height / 2;');
-  console.log('The area of the triangle2 : ' + getTriangle2(5,2));
-
-  // (3) function literal 
-  /*
-    can assign to a variable, use as a parameter, and as a return variable.
-    called an anonymous function.
-  */
-  var getTriangle3 = function(base, height){
-    return base * height / 2;
-  };
-  console.log('The area of the triangle3 : ' + getTriangle3(5,3));
 
 
-  // (4) arrow function  
-  let getTriangle4 = (base, height) => {
-    return base * height / 2;
-  }
-  console.log('The area of the triangle4 : ' + getTriangle4(5,3));
-  // shote ver
-  let getTriangle4 = (base, height) => base * height / 2;
-  // shoter more, if there is no parameter
-  let getCircle = radius => radius * radius * Math.PI;
-  let show = () => console.log('hello'); // if no parameter, can not abridgment
+window.onload = function(e){ 
+  console.log('onload');
+};
+
+
+// It’s an Immediately-Invoked Function Expression, or IIFE for short.
+//The first pair of parentheses (function(){...}) turns the code within (in this case, a function) into an expression,
+// (function(){
+//   console.log('IFFE');
+// })()
+//the second pair of parentheses (function(){...})() calls the function that results from that evaluated expression.
+//一つ目の関数を実行する
+
+(function(){
+  console.log('IFFE');
+}());
+
+(function(){
+  console.log('IFFEs');
+})();
+
+var b = function() {
+  console.log('IFFE3');
+} ();
+
+var obj = { method: function() {
+  console.log('IFFE4');
+} () }
+
+var result = (function (param1, param2) {
+    return param1 + param2;
+}(1, 2));
+ 
+console.log(result); //3が出力される。
+
+
+
+// var testFnc = () =>{
+//   console.log('testFnc');
+// }
+
+// (testFnc)();
+// var testsFnc2 = function(){
+//   console.log('testFnc2');
+// }
+
+// console.log(typeof(testsFnc2));
+
+// var f = function () {
+// };
+// f();
+
+
+
+  // // (1) normal
+  // function getTriangle(base, height){
+  //   return base * height / 2;
+  // }
+  // console.log('The area of the triangle : ' + getTriangle(5,3));
+
+  // // (2) Function Constractor
+  // var getTriangle2 = new Function('base','height','return base * height / 2;');
+  // console.log('The area of the triangle2 : ' + getTriangle2(5,2));
+
+  // // (3) function literal 
+  // /*
+  //   can assign to a variable, use as a parameter, and as a return variable.
+  //   called an anonymous function.
+  // */
+  // var getTriangle3 = function(base, height){
+  //   return base * height / 2;
+  // };
+  // console.log('The area of the triangle3 : ' + getTriangle3(5,3));
+
+
+  // // (4) arrow function  
+  // let getTriangle4 = (base, height) => {
+  //   return base * height / 2;
+  // }
+  // console.log('The area of the triangle4 : ' + getTriangle4(5,3));
+  // // shote ver
+  // let getTriangle4 = (base, height) => base * height / 2;
+  // // shoter more, if there is no parameter
+  // let getCircle = radius => radius * radius * Math.PI;
+  // let show = () => console.log('hello'); // if no parameter, can not abridgment
 
 
 

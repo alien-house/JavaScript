@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript for Beginners</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var kai = 2;
+      var dai = 3;
+      console.log(kai);
+      console.log(dai);
+      dai.x = kai = 9;
+      console.log(kai);
+      console.log(dai);
+      console.log(dai.x);
+      dai.x = 88;
+      console.log(dai.x);
+      dai = {x: 1};
+      console.log(dai.x);
+
+      // ====================================
+      var statement = "I am an immutable value";
+      var otherStr = statement.slice(8, 17);
+      console.log(statement.slice(8, 17));
+      console.log(statement);
+      console.log(otherStr);
+
+
+      console.log('---------------------------------------');
+      console.log("i'm a lasagna hog".split(""));
+      console.log("i'm a lasagna hog".split("").reverse().join(""));
+
+
+      console.log('---------------------------------------');
+      var foo = 10 + '20';
+      console.log(foo);
+
+
+      console.log('---------------------------------------');
+      var foo = {n: 1};
+      var bar = foo;
+      foo.x = foo = {n: 2};
+      console.log(foo);
+      console.log(foo.x);
+
+      console.log('---------------------------------------');
+      
+      console.log('one');
+      setTimeout(function() {
+        console.log('two');
+      }, 0);
+      console.log('three');
+
+    </script>
+    <noscript>
+      You can't use Javascript.
+    </noscript>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript for Beginners</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+    function foo(num){
+      return function(num2){
+        console.log(num + ":" + num2);
+      }
+    }
+     var bar = foo(2);
+     bar(3); // 7
+     bar(5); // 12
+     bar(10); // 23
+
+
+
+    </script>
+    <noscript>
+      You can't use Javascript.
+    </noscript>
+  </body>
+</html>

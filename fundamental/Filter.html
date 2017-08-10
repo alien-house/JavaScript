@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Function HigherAnonymous</title>
+  </head>
+  <body>
+  <script type="text/javascript">
+var words = ["spray", "limit", "elite", "exuberant", "destruction", "present"];
+
+var longWords = words.filter(function(word){
+  return word.length > 6;
+});
+console.log(longWords);
+// Filtered array longWords is ["exuberant", "destruction", "present"]
+
+
+var words = ["spray", "limit", "elite", "exuberant", "destruction", "present"];
+
+var longWords = words.filter(word => word.length > 6);
+
+console.log(longWords);
+
+  </script>
+  <noscript>
+    You can't use Javascript.
+    </noscript>
+  </body>
+</html>

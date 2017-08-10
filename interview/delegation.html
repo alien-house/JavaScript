@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>delegation</title>
+  </head>
+  <body>
+    <ul>
+      <li>item1</li>
+      <li>item2</li>
+      <li>item3</li>
+      <li>item4</li>
+    </ul>
+
+
+    <script type="text/javascript">
+      document.querySelector("ul").addEventListener("click", function(e){
+          if([].indexOf.call(this.children, e.target) >= 0){
+              console.log(e.target);
+          }
+      }, false);
+
+      // each elements  
+      // [].forEach.call(document.querySelector("ul").children, function(e){
+      //     e.addEventListener("click", function(eve){console.log(e);}, false);
+      // });
+    </script>
+    <noscript>
+      You can't use Javascript.
+    </noscript>
+  </body>
+</html>

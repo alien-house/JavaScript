@@ -1,6 +1,8 @@
 # Javascript Laboratory
 
 ## Variables
+We use "let" or "const" for minimize mutable state.
+Normally, "var" is no longer need to use.
 
 ### var 
 Declare a variable with the var keyword.
@@ -29,3 +31,10 @@ const msg = "hoge"; // => error!
 msg = "hoge"; // => error!
 ```
 
+```javascript
+const x = { y:5 }
+x.y = 6;
+console.log(x); // =>  {y: 6}
+x = { y:9 } // => error!
+x = { z:1 }// => error!
+```

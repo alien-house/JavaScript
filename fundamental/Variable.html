@@ -48,14 +48,22 @@ console.log(bar); // => undefined
     var i = 5;
     console.log(i);
   }).call(this);
-  console.log(i); //error
+  // console.log(i); //error
 
   // same as [ES2015]
   {
     let i = 5;
     console.log(i);
   }
-  console.log(i); //error
+  // console.log(i); //error
+
+
+console.log("const============"); 
+const x = { y:5 }
+x.y = 6;
+console.log(x); // => {y: 6}
+x = { y:9 }
+x = { z:1 }
 
 
   </script>

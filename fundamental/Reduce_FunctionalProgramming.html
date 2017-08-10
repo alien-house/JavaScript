@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Reduce functinal programming</title>
+  </head>
+  <body>
+  <script type="text/javascript">
+
+  //The reduce() method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.
+var orders = [
+  {amount : 250},
+  {amount : 400},
+  {amount : 100},
+  {amount : 50},
+  {amount : 325}
+]
+
+// let totalAmount = orders.reduce(function(sum, order) {
+//   return sum + order.amount
+// }, 0)
+// 0 is starting parameter
+
+// arrow function ver!!
+let totalAmount = orders.reduce((sum, order) => sum + order.amount, 0)
+console.log(totalAmount);
+
+
+//================================
+// * its doesnt work. its just copy from web site!!
+import fs from 'fs';
+
+var output = fs.readFileSync('data.txt', 'utf8')
+  .trim()
+  .split('\n')
+  .map(line => line.split('\t'))
+  .reduce((customers, line) => {
+    customers[line[0]] = customersline[line[0]] || []
+    customers[line[0]].push({
+      name : line[1],
+      price: line[2],
+      quantity: line[3]
+    })
+    return customers
+  }, {})
+
+console.log('output', JSON.stringify(output, null, 2))
+
+
+
+
+
+  </script>
+  <noscript>
+    You can't use Javascript.
+    </noscript>
+  </body>
+</html>

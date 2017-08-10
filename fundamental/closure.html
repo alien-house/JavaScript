@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Array </title>
+  </head>
+  <body>
+  <script type="text/javascript">
+function wrapElements(a) { 
+  var result = [], i, n; 
+  for (i = 0, n = a.length; i < n; i ++) { 
+    (function(){
+      var j = i;
+      console.log(j);
+      result[i] = function(){ return a[j]; }; 
+    })();
+  }
+  return result; 
+} 
+var wrapped = wrapElements([10, 20, 30, 40, 50]); 
+var f = wrapped[0]; 
+f(); // ?
+console.log(f());
+
+
+console.log('=====================');
+
+
+function wrapElements(a) { 
+  var result = []; 
+  for (var i = 0, n = a.length; i < n; i ++) { 
+    (function(){
+      var j = i;
+      console.log(j);
+      result[i] = function(){ return a[j]; }; 
+    })();
+  }
+  return result; 
+} 
+var wrapped = wrapElements([10, 20, 30, 40, 50]); 
+var f = wrapped[0]; 
+f(); // ?
+console.log(f());
+
+
+console.log('=====================');
+
+
+function box(){ 
+  var val = undefined;
+  return { 
+    set: function( newVal){ 
+      val = newVal; 
+    }, 
+    get: function(){ 
+      return val; 
+    }, 
+    type: function(){ 
+      return typeof val; 
+    } 
+  }; 
+} 
+var b = box(); 
+console.log(b.type()); // "undefined" 
+b.set( 98.6); 
+console.log(b.get()); // 98. 6 
+console.log(b.type()); // "number"
+
+var c = box(); 
+console.log(c.get()); // 98. 6 
+
+
+
+
+
+
+
+
+
+
+    console.log('=====================');
+
+var module = (function() {
+  var count = 0;
+  return {
+    increment: function() {
+      count++;
+    },
+    show: function() {
+      console.log(count);
+    }
+  };
+})();
+
+module.show(); // 0
+module.increment();
+module.show(); // 1
+console.log(module.count); // undefined
+console.log(count); // not defind
+
+
+  </script>
+  <noscript>
+    You can't use Javascript.
+    </noscript>
+  </body>
+</html>

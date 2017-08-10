@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Higher-Order Functions</title>
+</head>
+<body>
+<script type="text/javascript">
+/*
+  Functional Programming
+  For less bugs, and less time.
+  Re-use more code.
+*/
+
+
+var animals = [
+  {name: 'Fluffykins', species: 'rabbit'},
+  {name: 'Caro',       species: 'dog'},
+  {name: 'Hamilton',   species: 'dog'},
+  {name: 'Harold',     species: 'fish'},
+  {name: 'Ursula',     species: 'cat'},
+  {name: 'Jimmy',      species: 'fish'}
+]
+
+//==============================
+// filter
+var dogs = animals.filter(function(animal) {
+  return animal.species === 'dog'
+})
+
+//==============================
+// analysis, how it is higher order function.
+var IsDog = function(animal) {
+  return animal.species === 'dogs'
+}
+var dogs = animals.filter(isDog);
+
+
+
+//==============================
+// order method
+var dogs = []
+for (var i = 0; i < animals.length; i++) {
+  if (animals[i].species  === 'dog')
+    dogs.push(animals[i])
+}
+
+
+</script>
+<noscript>
+You can't use Javascript.
+</noscript>
+</body>
+</html>

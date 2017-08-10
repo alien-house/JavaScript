@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hoisting</title>
+  </head>
+  <body>
+  <script type="text/javascript">
+  /* =================================== */
+  /*  Function
+  /* =================================== */
+window.onload = function(e){ 
+  var x = 5; // Initialize x
+
+  elem = document.getElementById("demo"); // Find an element 
+  elem.innerHTML = x + " " + y;           // Display x and y
+
+  var y = 7; // Initialize y
+
+};
+// the same as writing。。。
+/* 
+var x = 5; // Initialize x
+var y;     // Declare y
+
+elem = document.getElementById("demo"); // Find an element 
+elem.innerHTML = x + " " + y;           // Display x and y
+
+y = 7;    // Assign 7 to y
+*/
+
+
+
+
+  </script>
+  <noscript>
+    You can't use Javascript.
+    </noscript>
+    <div id="demo"></div>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Curry</title>
+  </head>
+  <body>
+  <script type="text/javascript">
+  /* =================================== */
+  /*  
+  /* =================================== */
+
+function multiply(x, y){
+    if(typeof y === "undefined"){ //部分適用
+        return function(y){
+            return x * y;
+        };
+    }
+    //完全適用
+    return x * y;
+}
+console.log(multiply(4)(5));
+console.log(multiply(4));
+
+  </script>
+  <noscript>
+    You can't use Javascript.
+    </noscript>
+  </body>
+</html>

@@ -8,6 +8,8 @@
   <script type="text/javascript">
 
   //The map() method creates a new array with the results of calling a provided function on every element in the calling array.
+  //map は、与えられた callback 関数を配列の各要素に対して順番に一度ずつ呼び出し、その結果から新しい配列を生成します。
+
 var animals = [
   {name: 'Fluffykins', species: 'rabbit'},
   {name: 'Caro',       species: 'dog'},
@@ -17,16 +19,14 @@ var animals = [
   {name: 'Jimmy',      species: 'fish'}
 ]
 
- // let names = animals.map(function(animal) {
- //  return animal.name
- // })   
+// let names = animals.map(function(animal) {
+// return animal.name
+// })   
 
 //--------------------------
 // arrow function ver!!
 let names = animals.map((x) => x.name)  
-
- console.log(names);
-
+console.log(names);
 
   </script>
   <noscript>

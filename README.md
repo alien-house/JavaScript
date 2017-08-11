@@ -4,9 +4,10 @@
 
   1. [Variables](#sec-var)
   1. [Map](#sec-map)
+  1. [Thanks](#sec-thanks)
 
-## Variables
 <a name="sec-var"></a>
+## Variables
 We use "let" or "const" for minimize mutable state.
 Normally, "var" is no longer need to use.
 
@@ -44,8 +45,8 @@ x = { y:9 } // => error!
 x = { z:1 }// => error!
 ```
 
-## Map
 <a name="sec-map"></a>
+## Map
 The map() method creates a new array with the results of calling a provided function on every element in the calling array.
 ```javascript
 var animals = [
@@ -56,8 +57,6 @@ var animals = [
   {name: 'Ursula',     species: 'cat'},
   {name: 'Jimmy',      species: 'fish'}
 ]
-```
-```javascript
  let names = animals.map(function(animal) {
   return animal.name
  })   
@@ -67,8 +66,37 @@ console.log(names);
 ```
 
 
+<a name="sec-recursion"></a>
+## Recursion
+Recursion is when a function calls itself until it doesn't.
+if you cant find how many loop is needed, then this idea is better.
+```javascript
+var categories = [
+  {id : 'animals', 'parent': null},
+  {id : 'mammals', 'parent': 'animals'},
+  {id : 'cats', 'parent': 'mammals'},
+  {id : 'dogs', 'parent': 'mammals'},
+  {id : 'chihuahua', 'parent': 'dogs'},
+  {id : 'labrador', 'parent': 'dogs'},
+  {id : 'persian', 'parent': 'cats'},
+  {id : 'siamese', 'parent': 'cats'},
+]
+let makeTree = (categories, parent) => {
+  let node = {}
+  categories
+    .filter(c => c.parent === parent)
+    .forEach(c =>
+      node[c.id] = makeTree(categories, c.id))
+  return node
+}
+console.log(
+  JSON.stringify(
+    makeTree(categories, null), null, 2)
+)
+```
 
 
+<a name="sec-thanks"></a>
 ## Thanks
 - [w3schools.com](https://www.w3schools.com/js/default.asp)
 - [JavaScript reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)

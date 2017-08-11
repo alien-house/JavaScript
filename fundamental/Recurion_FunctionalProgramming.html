@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Recursion functinal programming</title>
+  </head>
+  <body>
+  <script type="text/javascript">
+
+//Recursion is when a function calls itself until it doesn't.
+//if you cant find how many loop is needed, then this idea is better.
+var categories = [
+  {id : 'animals', 'parent': null},
+  {id : 'mammals', 'parent': 'animals'},
+  {id : 'cats', 'parent': 'mammals'},
+  {id : 'dogs', 'parent': 'mammals'},
+  {id : 'chihuahua', 'parent': 'dogs'},
+  {id : 'labrador', 'parent': 'dogs'},
+  {id : 'persian', 'parent': 'cats'},
+  {id : 'siamese', 'parent': 'cats'},
+]
+
+let makeTree = (categories, parent) => {
+  let node = {}
+  categories
+    .filter(c => c.parent === parent)
+    .forEach(c =>
+      node[c.id] = makeTree(categories, c.id))
+  return node
+}
+
+console.log(
+  JSON.stringify(
+    makeTree(categories, null), null, 2)
+)
+
+
+  </script>
+  <noscript>
+    You can't use Javascript.
+    </noscript>
+  </body>
+</html>

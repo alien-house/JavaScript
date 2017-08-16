@@ -13,7 +13,7 @@ Modal.Box.prototype = {
     console.log('テョイス');
     // var frag = document.createDocumentFragment();
     // frag.appendChild(this.div);
-    this.list[0].focus();
+    // this.list[0].focus();
     this.list[0].className += ' add';
 
     for(var i = 0, len = this.bc.length; i < len; i++){

@@ -1,0 +1,30 @@
+.modal {
+  display: none;
+  opacity:0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  -webkit-transition: 10.3s ease-in-out;
+  -moz-transition: 10.3s ease-in-out;
+  transition: 10.3s ease-in-out;
+}
+.box {
+  width: 900px;
+  height: 400px;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.add {
+  display: block;
+  opacity: 1;
+}
+.close {
+  display: none;
+  opacity:0;
+}

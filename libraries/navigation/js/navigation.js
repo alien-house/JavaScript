@@ -1,41 +1,57 @@
 
-var Modal = Modal || {};
-Modal.Box = function(cn, bc){
-  this.list = document.getElementsByClassName(cn);
-  this.bc = document.getElementsByClassName(bc);
+var Nav = Nav || {};
+Nav.gnav = function(ni, bo, bc){
+  // this.list = document.getElementsByClassName(cn);
+  this.ni = document.getElementById(ni);
+  this.bo = document.getElementById(bo);
+  this.bc = document.getElementById(bc);
 }
-Modal.Box.prototype = {
+Nav.gnav.prototype = {
   start : function() {
     var that = this;
+    this.bo.onclick = function() { 
+       that.open();
+     };
+    this.bc.onclick = function() { 
+       that.close();
+     };
     // var list = document.getElementsByClassName(this.cn);
-    console.log(this.list);
     console.log('テョイス');
     // var frag = document.createDocumentFragment();
     // frag.appendChild(this.div);
     // this.list[0].focus();
-    this.list[0].className += ' add';
-    for(var i = 0, len = this.bc.length; i < len; i++){
-      this.bc[i].onclick = function() { 
-        that.close();
-      };
-    }
+    // this.list[0].className += ' add';
+    // for(var i = 0, len = this.bc.length; i < len; i++){
+    //   this.bc[i].onclick = function() { 
+    //     that.close();
+    //   };
+    // }
     // this.btn.appendChild(document.createTextNode("close"));
     // list[0].appendChild(this.btn);
   },
+  open : function() {
+    this.ni.className += ' add';
+    document.getElementById('contents').className += ' addContents';
+    document.body.className += ' addbody';
+  },
   close : function() {
-    this.list[0].classList.remove('add');
+    this.ni.classList.remove('add');
+    document.getElementById('contents').classList.remove('addContents');
+    document.body.classList.remove('addbody');
   }
 };
 
 window.onload = function() { 
-  var mem = new Modal.Box('modal', 'btn-close');
-  // mem.start();
-  var btnOpen = document.getElementsByClassName('btn-open');
-  for(var i = 0, len = btnOpen.length; i < len; i++){
-    btnOpen[i].onclick = function() { 
-      mem.start();
-    };
-  }
+  var gnav = new Nav.gnav('nav', 'btnOpen', 'btnClose');
+  gnav.start();
+  // var mem = new Modal.Box('modal', 'btn-close');
+  // // mem.start();
+  // var btnOpen = document.getElementsByClassName('btn-open');
+  // for(var i = 0, len = btnOpen.length; i < len; i++){
+  //   btnOpen[i].onclick = function() { 
+  //     mem.start();
+  //   };
+  // }
 
 }
 

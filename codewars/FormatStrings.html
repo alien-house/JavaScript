@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Format a string of names like 'Bart, Lisa &amp; Maggie'.</title>
+</head>
+<body>
+<script type="text/javascript">
+//本番では動かないやつ
+// function list(names){
+//   let namecall = "";
+//   if(names){
+//     let num = names.length;
+//     for (let key in names) { 
+//       namecall += names[key].name;
+//       if(!(key >= num - 1)){
+//         if(key >= num - 2){
+//           namecall += " & ";
+//         }else{
+//           namecall += ", ";
+//         }
+//       }
+//     }
+//   }
+//   return namecall;
+// }
+
+//best sokytion
+function list(names){
+  return names.reduce(function(prev, current, index, array){
+    if (index === 0){
+      return current.name;
+    }
+    else if (index === array.length - 1){
+      return prev + ' & ' + current.name;
+    } 
+    else {
+      return prev + ', ' + current.name;
+    }
+  }, '');
+ }
+
+//my solution
+// function list(names){
+//   let namecall = "";
+//   if(names){
+//     let num = names.length;
+//     for(let i = 0; i <= num-1; i++){
+//       namecall += names[i].name;
+//       if(!(i >= num - 1)){
+//         if(i === num - 2){
+//           namecall += " & ";
+//         }else{
+//           namecall += ", ";
+//         }
+//       }
+//     }
+//   }
+//   return namecall;
+// }
+      
+console.log(list([{name: 'Bart'},{name: 'Lisa'},{name: 'Maggie'},{name: 'Homer'},{name: 'Homer'},{name: 'Marge'}])); 
+console.log(list([ {name: 'Bart'}, {name: 'Lisa'} ])); 
+console.log(list([ {name: 'Bart'} ])); 
+console.log(list([])); 
+</script>
+<noscript>
+You can't use Javascript.
+</noscript>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Factory</title>
+</head>
+<body>
+<script type="text/javascript">
+/* =================================== */
+/*  Factory
+
+you can use Factory instead of class.
+much simpler than class.
+
+/* =================================== */
+
+//factory
+const dog = () => {
+  const sound = 'woof';
+  return {
+    talk: () => console.log(sound)
+  }
+}
+const sniffles = dog();
+sniffles.talk();
+
+//class
+class Dog {
+  constructor() {
+    this.sound = 'woof';
+  }
+  talk() {
+    console.log(this.sound);
+  }
+}
+const sniffles = new Dog();
+sniffles.talk();
+
+
+</script>
+<noscript>
+You can't use Javascript.
+</noscript>
+</body>
+</html>

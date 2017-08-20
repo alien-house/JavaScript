@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Promise</title>
+</head>
+<body>
+<script type="text/javascript">
+/* =================================== */
+/*  Promise
+/* =================================== */
+
+var promise = new Promise(function(resolve,reject){
+    resolve(42);
+    reject(34);
+});
+promise.then(function(value){
+    console.log(value);
+}).catch(function(error){
+    console.error(error);
+});
+
+
+
+// let uri = "./Variable.html";
+
+// fetch(uri, {
+//   method: "get"
+// }).then(function (response) {
+//   if (response.status === 200) {
+//     console.log(response.statusText); // => "OK"
+//   } else {
+//     console.log(response.statusText); // => Error Message
+//   }
+// }).catch(function (response) {
+//   console.log(response); // => "TypeError: ~"
+// });
+
+
+let promiseToCleanTheRoom = new Promise(function(resolve, reject){
+  let isClean = true;
+  if(isClean){
+    resolve("Clean");
+  }else{
+    reject("not Clean");
+  }
+});
+promiseToCleanTheRoom.then(function(fromResolve){
+  console.log("the romm is " + fromResolve);
+}).catch(function(fromReject){
+  console.log("the romm is " + fromReject);
+});
+
+
+</script>
+<noscript>
+  You can't use Javascript.
+  </noscript>
+</body>
+</html>

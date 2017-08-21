@@ -8,14 +8,26 @@
 <script type="text/javascript">
 
 //best sokytion
-function iqTest(numbers){
-var arr = numbers.split(" ");
-    console.log(arr);
-
-  arr.reduce(function(prev, current, index, array){
-    console.log(prev+":"+current);
-    return prev = current;
-  });
+function iqTest(numbers) {
+  var arr = numbers.split(" ");
+  var numArrEven = [];
+  var numArrOdd = [];
+  for(var i = 0, max = arr.length; i < max; i++ ) {
+    if(!(arr[i] % 2 == 0)){
+      numArrOdd.push(i + 1);
+    }else{
+      numArrEven.push(i + 1);
+    }
+  }
+  if(numArrEven.length > numArrOdd.length){
+    return numArrOdd[0];
+  }else{
+    return numArrEven[0];
+  }
+  // arr.reduce(function(prev, current, index, array){
+  //   console.log(prev+":"+current);
+  //   return prev = current;
+  // });
   // return numbers.reduce(function(prev, current, index, array){
   //   if (index === 0){
   //     return current.name;
@@ -29,22 +41,43 @@ var arr = numbers.split(" ");
   // }, '');
  }
       
-iqTest("2 4 7 8 10");
+// iqTest("2 4 7 8 10");
+console.log(iqTest("2 4 7 8 10"));
+console.log(iqTest("1 2 1 1"));
 
 
-var ary = [1,2,3,4,5];
-function sum(a) {
-  return a.reduce(function(x, y) { 
-    console.log(x+":"+y);
-    return x + y; 
-  });
+
+// other solution
+function iqTest(numbers){
+  numbers = numbers.split(" ").map(function(el){return parseInt(el)});
+  
+  var odd = numbers.filter(function(el){ return el % 2 === 1});
+  var even = numbers.filter(function(el){ return el % 2 === 0});
+  
+  return odd.length < even.length ? (numbers.indexOf(odd[0]) + 1) : (numbers.indexOf(even[0]) + 1);
 }
-sum(ary);
 
-// console.log(list([{name: 'Bart'},{name: 'Lisa'},{name: 'Maggie'},{name: 'Homer'},{name: 'Homer'},{name: 'Marge'}])); 
-// console.log(list([ {name: 'Bart'}, {name: 'Lisa'} ])); 
-// console.log(list([ {name: 'Bart'} ])); 
-// console.log(list([])); 
+function iqTest(numbers){
+  numbers = numbers.split(' ')
+  var evens = []
+  var odds = []
+  for (var i = 0; i < numbers.length; i++) {
+    if (numbers[i] & 1) {
+      odds.push(i + 1)
+    } else {
+      evens.push(i + 1)
+    }
+  }
+  return evens.length === 1 ? evens[0] : odds[0]
+}
+
+function iqTest(numbers){
+  var nums = numbers.split(" ").map(x => x % 2);  
+  var sum = nums.reduce((a,b) => a + b);  
+  var target = sum > 1 ? 0 : 1;
+  
+  return nums.indexOf(target) + 1;
+}
 </script>
 <noscript>
 You can't use Javascript.

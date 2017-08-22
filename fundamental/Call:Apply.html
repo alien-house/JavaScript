@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Call/Apply</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+// var Girl = function() {
+//   this.name = '女の子';
+//   this.enterToilet = function(){
+//     console.log(this.name + "が女子トイレに入る");
+//   };
+// };
+// var Boy = function() {
+//   this.name = '男の子';
+// };
+
+// new Girl().enterToilet();                // 女の子が女子トイレに入る
+// new Girl().enterToilet.call(new Boy());  // 男の子が女子トイレに入る
+
+
+
+
+
+// スーパークラス的な携帯電話
+function CellPhone(number) {
+  this.phoneNumber = number;
+}
+// サブクラス的なスマートフォン
+function SmartPhone(number, wifispots) {
+  this.wifispots = wifispots;
+  CellPhone.call(this, number);
+}
+SmartPhone.prototype = new CellPhone(); // insatnceof用
+// 利用コード(携帯番号とWifiスポットを固有データとして持たせます)
+var myphone = new SmartPhone('09012344432', ['Home','StarBucksWifi']);
+console.log(myphone);
+
+    </script>
+    <noscript>
+      You can't use Javascript.
+    </noscript>
+  </body>
+</html>
+
+
+

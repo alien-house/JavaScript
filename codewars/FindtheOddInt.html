@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>FindtheOddInt</title>
+</head>
+<body>
+<script type="text/javascript">
+/*
+Given an array, find the int that appears an odd number of times.
+There will always be only one integer that appears an odd number of times.
+*/
+
+
+function findOdd(A) {
+  var mn = A.length, num = 0, result = 0;
+  for(var i = 0; i < mn; i++){
+    for(var a = 0; a < mn; a++){
+      if(A[i] == A[a]){
+        num++;
+      }
+    }
+    if(!(num % 2 == 0)){
+      result = A[i];
+      return result;
+    }
+  }
+}
+
+//anothoer solutions
+//01
+function findOdd(A) {
+  var obj = {};
+  A.forEach(function(el){
+    obj[el] ? obj[el]++ : obj[el] = 1;
+  });
+  
+  for(prop in obj) {
+    if(obj[prop] % 2 !== 0) return Number(prop);
+  }
+}
+
+//02
+function findOdd(A) {
+  return A.reduce(function(c,v){return c^v;},0);
+}
+
+console.log(findOdd([20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5])); 
+console.log(findOdd([10])); 
+console.log(findOdd([5,4,3,2,1,5,4,3,2,10,10])); 
+</script>
+<noscript>
+You can't use Javascript.
+</noscript>
+</body>
+</html>

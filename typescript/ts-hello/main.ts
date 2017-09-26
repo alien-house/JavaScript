@@ -1,16 +1,25 @@
-function log(message){
-    console.log(message);
-}
-var message = 'Hello World';
+import { Point } from './point';
 
-log(message);
+let point = new Point(1, 2);
+let x = point.getX();
+point.setX(10);
+point.draw();
 
-var number = 1;
-let count = 2;
 
-function doSomething(){
+
+// function log(message){
+//     console.log(message);
+// }
+// var message = 'Hello World';
+
+// log(message);
+
+// var number = 1;
+// let count = 2;
+
+// function doSomething(){
     
-}
+// }
 
 
 

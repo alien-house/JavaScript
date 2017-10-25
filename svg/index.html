@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SVG.js</title>
+  <script type="text/javascript" src="bower_components/svg.js/dist/svg.min.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    window.onload = function(){
+      
+    if (SVG.supported) {
+      var draw = SVG('drawing')
+      var rect = draw.rect(100,100).animate().fill('#f03').move(100,100)
+    } else {
+      alert('SVG not supported')
+    }
+    }
+  </script>
+  <div id="drawing"></div>
+</body>
+</html>

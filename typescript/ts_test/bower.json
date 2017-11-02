@@ -1,0 +1,20 @@
+{
+  "name": "ts_test",
+  "description": "",
+  "authors": [
+    "alien-house <info@alien-house.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/alien-house/JavaScript",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "normalize-css": "^7.0.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "lib": [
+            "es2015",
+            "es2015.iterable",
+            "dom"
+        ]
+    },
+    "filesGlob":[
+        "./**/*.ts",
+        "!./node_modules/**/*/ts"
+    ],
+    "files": [
+        "./app.ts",
+        "./class.ts"
+    ]
+}

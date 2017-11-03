@@ -65,14 +65,15 @@
 	    TestClass.prototype.display = function () {
 	        window.addEventListener('scroll', function (e) {
 	            var elements = $('.imgBox');
-	            var rect = elements[0].getBoundingClientRect();
 	            var winHeight = (window.innerHeight / 2);
-	            if (window.scrollY > rect.top) {
-	                elements.find(".imgBg").addClass("move");
-	            }
-	            else {
-	                console.log("さよなら");
-	            }
+	            $.each(elements, function (key, value) {
+	                var rect = value.getBoundingClientRect();
+	                var winHeight = (window.innerHeight / 2);
+	                console.dir("imgBox:" + rect.top);
+	                if (winHeight > rect.top) {
+	                    $(value).find(".imgBg").addClass("move");
+	                }
+	            });
 	        });
 	        console.log("dekudssstaa");
 	        $.ajax({

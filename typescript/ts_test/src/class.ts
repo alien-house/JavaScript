@@ -16,34 +16,33 @@ export class TestClass {
             // console.log(window.scrollY);
             // let elements = document.getElementsByClassName('imgBox');
             let elements = $('.imgBox');
-            let rect = elements[0].getBoundingClientRect();
-            let winHeight =  (window.innerHeight / 2);
-            // console.dir("imgBox:" + rect.top);
-            // console.log("window.pageXOffset" + window.pageXOffset);
+            let winHeight = (window.innerHeight / 2);
+
+            $.each(elements, function (key, value) {
+                // alert(key + ": " + value);
+                let rect = value.getBoundingClientRect();
+                let winHeight =  (window.innerHeight / 2);
+                console.dir("imgBox:" + rect.top);
+                if (winHeight > rect.top) {
+                    $(value).find(".imgBg").addClass("move");
+                }
+            });
+
+
+
+            // let rect = elements[0].getBoundingClientRect();
+            // let winHeight =  (window.innerHeight / 2);
+            // // console.dir("imgBox:" + rect.top);
+            // // console.log("window.pageXOffset" + window.pageXOffset);
             
-            if (window.scrollY > rect.top) {
-                elements.find(".imgBg").addClass("move");
-                // elements[0].childNodes("imgBg").className += "move";
-            } else {
-                console.log("さよなら");
-            }
-
-
-
-            // last_known_scroll_position = window.scrollY;
-
-            // if (!ticking) {
-
-            //     window.requestAnimationFrame(function () {
-            //         doSomething(last_known_scroll_position);
-            //         ticking = false;
-            //     });
-
-            //     ticking = true;
-
+            // if (window.scrollY > rect.top) {
+            //     elements.find(".imgBg").addClass("move");
+            //     // elements[0].childNodes("imgBg").className += "move";
+            // } else {
+            //     console.log("さよなら");
             // }
-
         });
+
 
 
 

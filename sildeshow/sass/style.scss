@@ -1,0 +1,47 @@
+li{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+
+body{
+	font-size:22px;
+	font-weight: bold;
+	text-align: center;
+	p {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+}
+.sildeshow {
+}
+.sildeshow-box{
+	position: relative;
+	width: 200px;
+	height: 180px;
+}
+.sildeshow-item {
+	position: absolute;
+	// display: none;
+	visibility:hidden;
+}
+.sildeshow-item img {
+	width: 100%;
+	height: auto;
+}
+
+.sildeshow-list {
+		text-align: left;
+	li{
+		cursor: pointer;
+		width: 8px;
+		height: 8px;
+		border-radius: 5px;
+		margin: 5px;
+		display: inline-block;
+		background: #333;
+		&.current{
+			background: #ff0000;
+		}
+	}
+}
